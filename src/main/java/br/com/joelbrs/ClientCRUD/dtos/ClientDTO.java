@@ -68,7 +68,6 @@ public class ClientDTO implements Serializable {
     }
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateControl.DATE_PATTERN, timezone = "America/Fortaleza")
-
     public Instant getBirthDate() {
         return birthDate;
     }
