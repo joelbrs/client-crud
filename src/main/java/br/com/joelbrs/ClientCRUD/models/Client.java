@@ -4,21 +4,25 @@ import br.com.joelbrs.ClientCRUD.utils.DateControl;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_client")
-public class Client {
+public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String cpf;
     private Double income;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateControl.DATE_PATTERN, timezone = "America/Fortaleza")
     private Instant birthDate;
     private Integer children;
 

@@ -1,10 +1,13 @@
 package br.com.joelbrs.ClientCRUD.dtos;
 
 import br.com.joelbrs.ClientCRUD.models.Client;
+import br.com.joelbrs.ClientCRUD.utils.DateControl;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-public class ClientDTO {
+public class ClientDTO implements Serializable {
     private Long id;
     private String name;
     private String cpf;
@@ -63,6 +66,8 @@ public class ClientDTO {
     public void setIncome(Double income) {
         this.income = income;
     }
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateControl.DATE_PATTERN, timezone = "America/Fortaleza")
 
     public Instant getBirthDate() {
         return birthDate;
