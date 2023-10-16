@@ -15,11 +15,10 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
-        String msg = "Resource Not Found!";
         HttpStatus status = HttpStatus.NOT_FOUND;
         String path = request.getRequestURI();
-        String err = "Not Found";
+        String err = "Resource Not Found!";
 
-        return ResponseEntity.status(status.value()).body(new StandardError(Instant.now(), status.value(), err, msg, path));
+        return ResponseEntity.status(status.value()).body(new StandardError(Instant.now(), status.value(), err, e.getMessage(), path));
     }
 }
